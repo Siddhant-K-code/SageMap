@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SageMap - Map Your Evolving Beliefs",
     description: "Discover, map, and evolve your belief system over time with AI-powered introspection",
-    url: "https://sagemap.app",
+    url: "https://sagemap.netlify.app",
     siteName: "SageMap",
     images: [
       {
