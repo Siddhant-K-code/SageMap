@@ -252,7 +252,15 @@ export default function SettingsPage() {
               OpenAI API Key
             </CardTitle>
             <p className="text-sm text-gray-600">
-              Use your own OpenAI API key for belief extraction. This key is stored locally in your browser.
+              Use your own OpenAI API key for belief extraction. This key is stored locally in your browser. Get one from{' '}
+              <a
+                href="https://platform.openai.com/api-keys"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 underline"
+              >
+                OpenAI's API Keys page
+              </a>.
             </p>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -300,9 +308,8 @@ export default function SettingsPage() {
 
               {/* Key Status */}
               {keyStatus !== 'unknown' && (
-                <div className={`flex items-center gap-2 text-sm ${
-                  keyStatus === 'valid' ? 'text-green-600' : 'text-red-600'
-                }`}>
+                <div className={`flex items-center gap-2 text-sm ${keyStatus === 'valid' ? 'text-green-600' : 'text-red-600'
+                  }`}>
                   {keyStatus === 'valid' ? (
                     <>
                       <CheckCircle className="w-4 h-4" />
@@ -504,9 +511,9 @@ export default function SettingsPage() {
                 It uses GPT-4o to extract beliefs from your journal entries and visualizes them as an interactive graph.
               </p>
               <div className="flex items-center gap-2 pt-2">
-                <a 
-                  href="https://github.com/Siddhant-K-code/SageMap" 
-                  target="_blank" 
+                <a
+                  href="https://github.com/Siddhant-K-code/SageMap"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
                 >
