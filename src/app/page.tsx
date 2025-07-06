@@ -11,20 +11,20 @@ export default function Home() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Brain className="w-8 h-8 text-blue-600" />
-            <h1 className="text-4xl font-bold text-gray-900">SageMap</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">SageMap</h1>
           </div>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto px-4">
             Discover, map, and evolve your belief system over time with AI-powered introspection
           </p>
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/journal">
-              <Button size="lg" className="flex items-center gap-2">
+              <Button size="lg" className="flex items-center gap-2 w-full sm:w-auto">
                 <PenTool className="w-5 h-5" />
                 Start Journaling
               </Button>
             </Link>
             <Link href="/graph">
-              <Button variant="outline" size="lg" className="flex items-center gap-2">
+              <Button variant="outline" size="lg" className="flex items-center gap-2 w-full sm:w-auto">
                 <Network className="w-5 h-5" />
                 View Belief Graph
               </Button>
@@ -33,7 +33,7 @@ export default function Home() {
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           <Card className="hover:shadow-lg transition-shadow">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -126,9 +126,9 @@ export default function Home() {
         </div>
 
         {/* How It Works */}
-        <div className="bg-white rounded-2xl p-8 shadow-sm border">
-          <h2 className="text-2xl font-bold text-center mb-8">How SageMap Works</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+        <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border">
+          <h2 className="text-xl sm:text-2xl font-bold text-center mb-8">How SageMap Works</h2>
+          <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
             <div className="text-center">
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-blue-600 font-bold">1</span>
@@ -164,8 +164,8 @@ export default function Home() {
 
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <h2 className="text-2xl font-bold mb-4">Ready to Map Your Beliefs?</h2>
-          <p className="text-gray-600 mb-8 max-w-lg mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4">Ready to Map Your Beliefs?</h2>
+          <p className="text-gray-600 mb-8 max-w-lg mx-auto px-4">
             Start your journey of self-discovery and build a deeper understanding
             of your belief system.
           </p>
@@ -176,7 +176,7 @@ export default function Home() {
                 Begin Your First Entry
               </Button>
             </Link>
-            <p className="text-xs text-gray-500 max-w-lg mx-auto mt-4">
+            <p className="text-xs text-gray-500 max-w-lg mx-auto mt-4 px-4">
               💡 Tip: Add your own OpenAI API key in settings to make it work.
             </p>
           </div>

@@ -37,7 +37,7 @@ export function BeliefNode({ belief, onUpdate, showDetails = false, connectedBel
   };
 
   return (
-    <Card className={`w-full max-w-md ${belief.deprecated ? 'opacity-50' : ''}`}>
+    <Card className={`w-full ${belief.deprecated ? 'opacity-50' : ''}`}>
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between">
           <CardTitle className="text-sm font-medium leading-tight">
@@ -91,7 +91,7 @@ export function BeliefNode({ belief, onUpdate, showDetails = false, connectedBel
           </div>
           
           {/* Metadata */}
-          <div className="flex items-center gap-4 text-xs text-gray-500">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-xs text-gray-500">
             <div className="flex items-center gap-1">
               <Calendar className="w-3 h-3" />
               {new Date(belief.created_at).toLocaleDateString()}

@@ -45,13 +45,21 @@ export function SimpleGraphVisualization() {
     const handleStorageChange = () => {
       fetchGraphData();
     };
+
+    // Listen for window resize to reposition nodes on orientation change
+    const handleResize = () => {
+      // Re-fetch and reposition nodes on resize
+      setTimeout(() => fetchGraphData(), 100);
+    };
     
     window.addEventListener('storage', handleStorageChange);
     window.addEventListener('localStorageUpdate', handleStorageChange);
+    window.addEventListener('resize', handleResize);
     
     return () => {
       window.removeEventListener('storage', handleStorageChange);
       window.removeEventListener('localStorageUpdate', handleStorageChange);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -63,11 +71,16 @@ export function SimpleGraphVisualization() {
       
       // Position nodes in a circle for simple visualization
       if (data.nodes.length > 0) {
+        // Use responsive dimensions
+        const canvasWidth = window.innerWidth < 640 ? Math.min(350, window.innerWidth - 40) : 500;
+        const canvasHeight = 400;
+        const centerX = canvasWidth / 2;
+        const centerY = canvasHeight / 2;
+        const maxRadius = Math.min(centerX, centerY) * 0.6;
+        const radius = Math.min(maxRadius, 50 + data.nodes.length * 8);
+        
         const positioned = data.nodes.map((node: GraphNode, index: number) => {
           const angle = (2 * Math.PI * index) / data.nodes.length;
-          const radius = Math.min(120, 50 + data.nodes.length * 8);
-          const centerX = 250;
-          const centerY = 200;
           return {
             ...node,
             x: centerX + radius * Math.cos(angle),
@@ -94,12 +107,18 @@ export function SimpleGraphVisualization() {
     const rect = canvas.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
     
+    // Set actual canvas size for high DPI
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
     ctx.scale(dpr, dpr);
     
+    // Set display size
     canvas.style.width = rect.width + 'px';
     canvas.style.height = rect.height + 'px';
+    
+    // Store display dimensions for interaction calculations
+    canvas.dataset.displayWidth = rect.width.toString();
+    canvas.dataset.displayHeight = rect.height.toString();
 
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -176,13 +195,13 @@ export function SimpleGraphVisualization() {
     });
   }, [graphData, selectedNode, mounted]);
 
-  const handleCanvasClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleCanvasInteraction = (clientX: number, clientY: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const rect = canvas.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
 
     // Find clicked node
     const clickedNode = graphData.nodes.find(node => {
@@ -193,6 +212,18 @@ export function SimpleGraphVisualization() {
     });
 
     setSelectedNode(clickedNode || null);
+  };
+
+  const handleCanvasClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
+    handleCanvasInteraction(event.clientX, event.clientY);
+  };
+
+  const handleCanvasTouch = (event: React.TouchEvent<HTMLCanvasElement>) => {
+    event.preventDefault(); // Prevent scrolling
+    if (event.touches.length === 1) {
+      const touch = event.touches[0];
+      handleCanvasInteraction(touch.clientX, touch.clientY);
+    }
   };
 
   const getNodeColor = (type: string) => {
@@ -241,41 +272,74 @@ export function SimpleGraphVisualization() {
               <p className="text-sm">Add some journal entries to see your belief graph</p>
             </div>
           ) : (
-            <div className="relative">
-              <canvas
-                ref={canvasRef}
-                width={800}
-                height={400}
-                className="border rounded-lg cursor-pointer bg-white"
-                onClick={handleCanvasClick}
-              />
-              
-              {/* Legend */}
-              <div className="absolute top-2 right-2 bg-white p-3 rounded-lg shadow-md border">
-                <h4 className="text-sm font-medium mb-2">Legend</h4>
-                <div className="space-y-1 text-xs">
+            <div className="space-y-4">
+              <div className="relative">
+                <canvas
+                  ref={canvasRef}
+                  className="border rounded-lg cursor-pointer bg-white w-full"
+                  style={{ maxWidth: '100%', height: '400px' }}
+                  onClick={handleCanvasClick}
+                  onTouchStart={handleCanvasTouch}
+                />
+                
+                {/* Legend - Desktop only */}
+                <div className="hidden sm:block absolute top-2 right-2 bg-white p-3 rounded-lg shadow-md border">
+                  <h4 className="text-sm font-medium mb-2">Legend</h4>
+                  <div className="space-y-1 text-xs">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                      <span>Core Beliefs</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                      <span>Assumptions</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                      <span>Derived Beliefs</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-0.5 bg-red-500"></div>
+                      <span>Contradicts</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-0.5 bg-green-500"></div>
+                      <span>Reinforces</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-0.5 bg-purple-500"></div>
+                      <span>Evolved From</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Legend - Mobile only */}
+              <div className="sm:hidden bg-white p-3 rounded-lg shadow-md border">
+                <h4 className="text-sm font-medium mb-3">Legend</h4>
+                <div className="grid grid-cols-2 gap-3 text-xs">
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-blue-500 flex-shrink-0"></div>
                     <span>Core Beliefs</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500 flex-shrink-0"></div>
                     <span>Assumptions</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500 flex-shrink-0"></div>
                     <span>Derived Beliefs</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-0.5 bg-red-500"></div>
+                    <div className="w-4 h-0.5 bg-red-500 flex-shrink-0"></div>
                     <span>Contradicts</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-0.5 bg-green-500"></div>
+                    <div className="w-4 h-0.5 bg-green-500 flex-shrink-0"></div>
                     <span>Reinforces</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-0.5 bg-purple-500"></div>
+                    <div className="w-4 h-0.5 bg-purple-500 flex-shrink-0"></div>
                     <span>Evolved From</span>
                   </div>
                 </div>

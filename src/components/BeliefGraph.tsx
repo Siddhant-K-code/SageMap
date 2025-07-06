@@ -275,43 +275,77 @@ export function BeliefGraph() {
               <p className="text-sm">Add some journal entries to see your belief graph</p>
             </div>
           ) : (
-            <div className="relative">
-              <svg
-                ref={svgRef}
-                width={800}
-                height={400}
-                className="border rounded-lg bg-white"
-                style={{ cursor: 'grab' }}
-                onMouseDown={(e) => e.currentTarget.style.cursor = 'grabbing'}
-                onMouseUp={(e) => e.currentTarget.style.cursor = 'grab'}
-              />
-              
-              {/* Legend */}
-              <div className="absolute top-2 right-2 bg-white p-3 rounded-lg shadow-md border">
-                <h4 className="text-sm font-medium mb-2">Legend</h4>
-                <div className="space-y-1 text-xs">
+            <div className="space-y-4">
+              <div className="relative">
+                <svg
+                  ref={svgRef}
+                  width="100%"
+                  height={400}
+                  viewBox="0 0 800 400"
+                  className="border rounded-lg bg-white w-full"
+                  style={{ cursor: 'grab' }}
+                  onMouseDown={(e) => e.currentTarget.style.cursor = 'grabbing'}
+                  onMouseUp={(e) => e.currentTarget.style.cursor = 'grab'}
+                />
+                
+                {/* Legend - Desktop only */}
+                <div className="hidden sm:block absolute top-2 right-2 bg-white p-3 rounded-lg shadow-md border">
+                  <h4 className="text-sm font-medium mb-2">Legend</h4>
+                  <div className="space-y-1 text-xs">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                      <span>Core Beliefs</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                      <span>Assumptions</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                      <span>Derived Beliefs</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-0.5 bg-red-500"></div>
+                      <span>Contradicts</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-0.5 bg-green-500"></div>
+                      <span>Reinforces</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-0.5 bg-purple-500"></div>
+                      <span>Evolved From</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Legend - Mobile only */}
+              <div className="sm:hidden bg-white p-3 rounded-lg shadow-md border">
+                <h4 className="text-sm font-medium mb-3">Legend</h4>
+                <div className="grid grid-cols-2 gap-3 text-xs">
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-blue-500 flex-shrink-0"></div>
                     <span>Core Beliefs</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500 flex-shrink-0"></div>
                     <span>Assumptions</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500 flex-shrink-0"></div>
                     <span>Derived Beliefs</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-0.5 bg-red-500"></div>
+                    <div className="w-4 h-0.5 bg-red-500 flex-shrink-0"></div>
                     <span>Contradicts</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-0.5 bg-green-500"></div>
+                    <div className="w-4 h-0.5 bg-green-500 flex-shrink-0"></div>
                     <span>Reinforces</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-0.5 bg-purple-500"></div>
+                    <div className="w-4 h-0.5 bg-purple-500 flex-shrink-0"></div>
                     <span>Evolved From</span>
                   </div>
                 </div>

@@ -180,7 +180,7 @@ export function Journal() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6">
+    <div className="max-w-4xl mx-auto p-4 sm:p-6 space-y-6">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -221,14 +221,14 @@ export function Journal() {
               disabled={isProcessing}
             />
 
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <span className="text-sm text-gray-500">
                 {content.length} characters
               </span>
               <Button
                 type="submit"
                 disabled={isProcessing || !content.trim()}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 w-full sm:w-auto"
               >
                 {isProcessing ? (
                   <>
@@ -256,7 +256,7 @@ export function Journal() {
                   key={thought}
                   variant="outline"
                   size="sm"
-                  className="text-xs"
+                  className="text-xs break-words"
                   onClick={() => setContent(`I think ${thought.toLowerCase()}. Here's why...`)}
                   disabled={isProcessing}
                 >

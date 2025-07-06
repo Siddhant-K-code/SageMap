@@ -11,34 +11,37 @@ export default function GraphPage() {
   const [viewMode, setViewMode] = useState<'simple' | 'advanced' | 'list'>('simple');
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
       <div className="max-w-6xl mx-auto space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Belief Visualization</h1>
-          <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <h1 className="text-xl sm:text-2xl font-bold">Belief Visualization</h1>
+          <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto">
             <Button
               variant={viewMode === 'simple' ? 'default' : 'outline'}
               onClick={() => setViewMode('simple')}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 text-sm whitespace-nowrap"
             >
               <Zap className="w-4 h-4" />
-              Simple Graph
+              <span className="hidden sm:inline">Simple Graph</span>
+              <span className="sm:hidden">Simple</span>
             </Button>
             <Button
               variant={viewMode === 'advanced' ? 'default' : 'outline'}
               onClick={() => setViewMode('advanced')}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 text-sm whitespace-nowrap"
             >
               <Network className="w-4 h-4" />
-              Advanced Graph
+              <span className="hidden sm:inline">Advanced Graph</span>
+              <span className="sm:hidden">Advanced</span>
             </Button>
             <Button
               variant={viewMode === 'list' ? 'default' : 'outline'}
               onClick={() => setViewMode('list')}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 text-sm whitespace-nowrap"
             >
               <List className="w-4 h-4" />
-              List View
+              <span className="hidden sm:inline">List View</span>
+              <span className="sm:hidden">List</span>
             </Button>
           </div>
         </div>

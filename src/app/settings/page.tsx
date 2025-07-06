@@ -181,7 +181,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
       <div className="max-w-4xl mx-auto space-y-6">
         <div className="flex items-center gap-2 mb-6">
           <h1 className="text-2xl font-bold">Settings</h1>
@@ -209,7 +209,7 @@ export default function SettingsPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="text-center">
                 <div className="text-2xl font-bold text-blue-600">
                   {isLoadingStats ? (
@@ -257,7 +257,7 @@ export default function SettingsPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-3">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                 <div className="relative flex-1">
                   <Input
                     type={showApiKey ? 'text' : 'password'}
@@ -282,7 +282,7 @@ export default function SettingsPage() {
                   disabled={isTestingKey || !userApiKey.trim()}
                   variant="outline"
                   size="sm"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 w-full sm:w-auto"
                 >
                   {isTestingKey ? (
                     <>
@@ -318,11 +318,11 @@ export default function SettingsPage() {
               )}
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                 <Button
                   onClick={handleSaveApiKey}
                   disabled={!userApiKey.trim()}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 w-full sm:w-auto"
                 >
                   <Key className="w-4 h-4" />
                   Save Key
@@ -332,7 +332,7 @@ export default function SettingsPage() {
                   <Button
                     onClick={handleRemoveApiKey}
                     variant="outline"
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 w-full sm:w-auto"
                   >
                     <Trash2 className="w-4 h-4" />
                     Remove Key
