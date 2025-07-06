@@ -50,12 +50,8 @@ export function Journal() {
       return;
     }
 
-    // Get API key from localStorage
+    // Get API key from localStorage (optional for Azure OpenAI version)
     const apiKey = localStorage.getItem('user_openai_key');
-    if (!apiKey) {
-      toast.error('OpenAI API key not found. Please add your API key in Settings.');
-      return;
-    }
 
     // Get existing beliefs for contradiction/evolution checking
     const existingBeliefs = getBeliefs();

@@ -38,7 +38,7 @@ function getOpenAIClient(apiKey?: string) {
   const effectiveApiKey = apiKey || process.env.OPENAI_API_KEY;
 
   if (!effectiveApiKey) {
-    throw new Error('OpenAI API key not found. Please add your API key in Settings or set OPENAI_API_KEY in your .env.local file.');
+    throw new Error('No API configuration found. Please set Azure OpenAI environment variables or add your OpenAI API key in Settings.');
   }
 
   return new OpenAI({
