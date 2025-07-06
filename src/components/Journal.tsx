@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -33,14 +34,21 @@ interface ProcessedBelief {
 }
 
 export function Journal() {
+  const searchParams = useSearchParams();
   const [content, setContent] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [processedBeliefs, setProcessedBeliefs] = useState<ProcessedBelief[]>([]);
   const [showResults, setShowResults] = useState(false);
   const [mounted, setMounted] = useState(false);
+  
   useEffect(() => {
     setMounted(true);
-  }, []);
+    // Check for prompt parameter in URL
+    const prompt = searchParams.get('prompt');
+    if (prompt) {
+      setContent(prompt);
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -247,7 +255,7 @@ export function Journal() {
                   key={thought}
                   variant="outline"
                   size="sm"
-                  className="text-xs break-words"
+                  className="text-xs break-words cursor-pointer hover:bg-gray-50"
                   onClick={() => setContent(`I think ${thought.toLowerCase()}. Here's why...`)}
                   disabled={isProcessing}
                 >
@@ -332,10 +340,10 @@ export function Journal() {
                     <p>• <strong>Journal more</strong> to track how your beliefs evolve over time</p>
                   </div>
                   <div className="mt-3 flex gap-2">
-                    <a href="/graph" className="text-xs bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+                    <a href="/graph" className="text-xs bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 cursor-pointer">
                       View Graph
                     </a>
-                    <button onClick={() => window.scrollTo(0, 0)} className="text-xs bg-white text-blue-600 border border-blue-300 px-3 py-1 rounded hover:bg-blue-50">
+                    <button onClick={() => window.scrollTo(0, 0)} className="text-xs bg-white text-blue-600 border border-blue-300 px-3 py-1 rounded hover:bg-blue-50 cursor-pointer">
                       Write More
                     </button>
                   </div>

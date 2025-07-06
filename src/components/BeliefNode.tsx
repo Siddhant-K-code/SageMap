@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { Belief } from '@/lib/client-storage';
 import { Calendar, Link2, TrendingUp } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 interface BeliefNodeProps {
   belief: Belief;
@@ -15,10 +16,22 @@ interface BeliefNodeProps {
 }
 
 export function BeliefNode({ belief, onUpdate, showDetails = false, connectedBeliefs = [] }: BeliefNodeProps) {
+  const router = useRouter();
+
   const handleConfidenceChange = (value: number[]) => {
     if (onUpdate) {
       onUpdate(belief.id, { confidence: value[0] });
     }
+  };
+
+  const handleViewInGraph = () => {
+    router.push(`/graph?highlight=${belief.id}`);
+  };
+
+  const handleReflectMore = () => {
+    // Pre-fill journal with a reflection prompt about this belief
+    const reflectionPrompt = `I want to reflect more on my belief that "${belief.text}". `;
+    router.push(`/journal?prompt=${encodeURIComponent(reflectionPrompt)}`);
   };
 
   const getTypeColor = (type: string) => {
@@ -118,10 +131,20 @@ export function BeliefNode({ belief, onUpdate, showDetails = false, connectedBel
                 💡 <strong>What you can do:</strong> Adjust confidence, explore connections in the graph, or reflect on how this belief impacts your decisions.
               </div>
               <div className="flex gap-2">
-                <Button variant="outline" size="sm" className="flex-1">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="flex-1 cursor-pointer"
+                  onClick={handleViewInGraph}
+                >
                   View in Graph
                 </Button>
-                <Button variant="outline" size="sm" className="flex-1">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="flex-1 cursor-pointer"
+                  onClick={handleReflectMore}
+                >
                   Reflect More
                 </Button>
               </div>

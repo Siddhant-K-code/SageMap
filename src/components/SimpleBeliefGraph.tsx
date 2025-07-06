@@ -102,7 +102,7 @@ export function SimpleBeliefGraph({ onNodeClick }: SimpleBeliefGraphProps) {
         <CardContent className="h-96 flex items-center justify-center">
           <div className="text-center">
             <p className="text-red-600 mb-2">{error}</p>
-            <Button onClick={fetchGraphData} variant="outline" size="sm">
+            <Button onClick={fetchGraphData} variant="outline" size="sm" className="cursor-pointer">
               Retry
             </Button>
           </div>
@@ -120,7 +120,7 @@ export function SimpleBeliefGraph({ onNodeClick }: SimpleBeliefGraphProps) {
               <Network className="w-5 h-5" />
               Belief Network
             </CardTitle>
-            <Button onClick={fetchGraphData} variant="outline" size="sm">
+            <Button onClick={fetchGraphData} variant="outline" size="sm" className="cursor-pointer">
               <RefreshCw className="w-4 h-4 mr-1" />
               Refresh
             </Button>

@@ -70,19 +70,19 @@ export default function RootLayout({
 
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center gap-6">
-                <Link href="/" className="flex items-center gap-2 text-gray-600 hover:text-gray-900">
+                <Link href="/" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 cursor-pointer">
                   <Home className="w-4 h-4" />
                   <span>Home</span>
                 </Link>
-                <Link href="/journal" className="flex items-center gap-2 text-gray-600 hover:text-gray-900">
+                <Link href="/journal" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 cursor-pointer">
                   <PenTool className="w-4 h-4" />
                   <span>Journal</span>
                 </Link>
-                <Link href="/graph" className="flex items-center gap-2 text-gray-600 hover:text-gray-900">
+                <Link href="/graph" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 cursor-pointer">
                   <Network className="w-4 h-4" />
                   <span>Graph</span>
                 </Link>
-                <Link href="/settings" className="flex items-center gap-2 text-gray-600 hover:text-gray-900">
+                <Link href="/settings" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 cursor-pointer">
                   <Settings className="w-4 h-4" />
                   <span>Settings</span>
                 </Link>
@@ -90,7 +90,7 @@ export default function RootLayout({
                   href="https://github.com/Siddhant-K-code/SageMap"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-black text-white hover:bg-gray-800 px-3 py-2 rounded-md transition-colors"
+                  className="flex items-center gap-2 bg-black text-white hover:bg-gray-800 px-3 py-2 rounded-md transition-colors cursor-pointer"
                 >
                   <Github className="w-4 h-4" />
                   <span>GitHub</span>
@@ -99,20 +99,20 @@ export default function RootLayout({
 
               {/* Mobile Navigation */}
               <div className="md:hidden flex items-center gap-3">
-                <Link href="/journal" className="p-2 text-gray-600 hover:text-gray-900">
+                <Link href="/journal" className="p-2 text-gray-600 hover:text-gray-900 cursor-pointer">
                   <PenTool className="w-5 h-5" />
                 </Link>
-                <Link href="/graph" className="p-2 text-gray-600 hover:text-gray-900">
+                <Link href="/graph" className="p-2 text-gray-600 hover:text-gray-900 cursor-pointer">
                   <Network className="w-5 h-5" />
                 </Link>
-                <Link href="/settings" className="p-2 text-gray-600 hover:text-gray-900">
+                <Link href="/settings" className="p-2 text-gray-600 hover:text-gray-900 cursor-pointer">
                   <Settings className="w-5 h-5" />
                 </Link>
                 <a
                   href="https://github.com/Siddhant-K-code/SageMap"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-gray-600 hover:text-gray-900"
+                  className="p-2 text-gray-600 hover:text-gray-900 cursor-pointer"
                 >
                   <Github className="w-5 h-5" />
                 </a>
