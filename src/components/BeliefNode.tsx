@@ -113,10 +113,18 @@ export function BeliefNode({ belief, onUpdate, showDetails = false, connectedBel
           )}
           
           {showDetails && (
-            <div className="pt-2 border-t">
-              <Button variant="outline" size="sm" className="w-full">
-                View Details
-              </Button>
+            <div className="pt-2 border-t space-y-2">
+              <div className="text-xs text-gray-500 bg-gray-50 p-2 rounded">
+                💡 <strong>What you can do:</strong> Adjust confidence, explore connections in the graph, or reflect on how this belief impacts your decisions.
+              </div>
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm" className="flex-1">
+                  View in Graph
+                </Button>
+                <Button variant="outline" size="sm" className="flex-1">
+                  Reflect More
+                </Button>
+              </div>
             </div>
           )}
         </div>

@@ -14,7 +14,12 @@ export default function GraphPage() {
     <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
       <div className="max-w-6xl mx-auto space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <h1 className="text-xl sm:text-2xl font-bold">Belief Visualization</h1>
+          <div>
+            <h1 className="text-xl sm:text-2xl font-bold">Belief Visualization</h1>
+            <p className="text-sm text-gray-600 mt-1">
+              Explore how your beliefs connect, influence each other, and form patterns in your thinking
+            </p>
+          </div>
           <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto">
             <Button
               variant={viewMode === 'simple' ? 'default' : 'outline'}
@@ -43,6 +48,22 @@ export default function GraphPage() {
               <span className="hidden sm:inline">List View</span>
               <span className="sm:hidden">List</span>
             </Button>
+          </div>
+        </div>
+
+        {/* Graph Benefits Explanation */}
+        <div className="bg-white p-4 rounded-lg border shadow-sm">
+          <h3 className="text-sm font-medium text-gray-900 mb-2">🧠 Why Visualize Your Beliefs?</h3>
+          <div className="grid sm:grid-cols-3 gap-4 text-xs text-gray-600">
+            <div>
+              <strong>• Discover Patterns:</strong> See which beliefs cluster together and which ones stand alone
+            </div>
+            <div>
+              <strong>• Find Contradictions:</strong> Spot beliefs that might conflict with each other
+            </div>
+            <div>
+              <strong>• Track Evolution:</strong> Watch how your thinking changes and develops over time
+            </div>
           </div>
         </div>
         
