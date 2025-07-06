@@ -244,8 +244,8 @@ export default function SettingsPage() {
           </CardContent>
         </Card>
 
-        {/* API Key Management */}
-        <Card>
+        {/* API Key Management - Disabled for Azure OpenAI public version */}
+        {false && <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Key className="w-5 h-5" />
@@ -380,7 +380,7 @@ export default function SettingsPage() {
               </div>
             </div>
           </CardContent>
-        </Card>
+        </Card>}
 
         {/* Privacy & Security */}
         <Card>

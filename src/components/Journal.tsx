@@ -38,13 +38,8 @@ export function Journal() {
   const [processedBeliefs, setProcessedBeliefs] = useState<ProcessedBelief[]>([]);
   const [showResults, setShowResults] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [hasApiKey, setHasApiKey] = useState(false);
-
   useEffect(() => {
     setMounted(true);
-    // Check if user has API key
-    const userKey = localStorage.getItem('user_openai_key');
-    setHasApiKey(!!userKey);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -193,8 +188,8 @@ export function Journal() {
           </p>
         </CardHeader>
         <CardContent>
-          {/* API Key Status */}
-          {!hasApiKey && (
+          {/* API Key Status - Disabled for Azure OpenAI public version */}
+          {/* {!hasApiKey && (
             <div className="mb-4 bg-amber-50 border border-amber-200 rounded-lg p-3">
               <div className="flex items-start gap-2">
                 <AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" />
@@ -210,7 +205,7 @@ export function Journal() {
                 </div>
               </div>
             </div>
-          )}
+          )} */}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <Textarea

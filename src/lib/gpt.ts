@@ -22,7 +22,19 @@ function extractJSON(text: string): any { // eslint-disable-line @typescript-esl
 }
 
 function getOpenAIClient(apiKey?: string) {
-  // Use passed API key or fallback to environment variable
+  // For Azure OpenAI, use server-side configuration
+  if (process.env.AZURE_OPENAI_ENDPOINT) {
+    return new OpenAI({
+      apiKey: process.env.AZURE_OPENAI_API_KEY,
+      baseURL: `${process.env.AZURE_OPENAI_ENDPOINT}/openai/deployments/${process.env.AZURE_OPENAI_DEPLOYMENT_NAME}`,
+      defaultQuery: { 'api-version': '2024-12-01-preview' },
+      defaultHeaders: {
+        'api-key': process.env.AZURE_OPENAI_API_KEY,
+      },
+    });
+  }
+
+  // Fallback to regular OpenAI for user-provided keys
   const effectiveApiKey = apiKey || process.env.OPENAI_API_KEY;
 
   if (!effectiveApiKey) {
