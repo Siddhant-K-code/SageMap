@@ -259,7 +259,7 @@ export default function SettingsPage() {
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-800 underline"
               >
-                OpenAI's API Keys page
+                OpenAI&apos;s API Keys page
               </a>.
             </p>
           </CardHeader>
