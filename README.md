@@ -17,24 +17,34 @@ Perfect for those 3AM existential crisis sessions or when you want to prove to y
 
 ## 🚀 Get Started (5 minutes)
 
+### 🌐 Try it Now (Public Version)
+**No setup needed!** Visit [sagemap.netlify.app](https://sagemap.netlify.app) and start journaling immediately - powered by Azure OpenAI.
+
+### 🛠️ Self-Host (Developer Version)
+
 1. **Clone it**
    ```bash
    git clone https://github.com/Siddhant-K-code/SageMap
    cd SageMap && npm install
    ```
 
+2. **Add your OpenAI key**
+   ```bash
+   cp .env.example .env.local
+   # Add your OPENAI_API_KEY to .env.local
+   ```
 
-2. **Launch**
+3. **Launch**
    ```bash
    npm run dev
    ```
 
-3. **Start typing** at `localhost:3000` and watch your mind get mapped! 🗺️
+4. **Start typing** at `localhost:3000` and watch your mind get mapped! 🗺️
 
 ## 💭 The Magic
 
 1. **Brain Dump**: Write naturally about anything - work stress, life philosophy, random shower thoughts
-2. **AI Analysis**: GPT-4o extracts your hidden beliefs and finds relationships
+2. **AI Analysis**: Azure OpenAI/GPT-4o extracts your hidden beliefs and finds relationships
 3. **Visual Discovery**: Interactive graphs show your belief networks, contradictions, and evolution
 4. **Mind = Blown**: Realize you hold completely opposing views on the same topics
 
@@ -50,7 +60,8 @@ Perfect for those 3AM existential crisis sessions or when you want to prove to y
 
 - **100% Local Storage**: Your deepest thoughts stay in your browser
 - **No Data Mining**: We don't see, store, or sell your beliefs
-- **Your API Key**: Bring your own OpenAI key for total control
+- **Azure OpenAI**: Public version uses secure Azure OpenAI for instant access
+- **Your API Key**: Self-host with your own OpenAI key for total control
 - **Export Everything**: Take your data anywhere, anytime
 
 ## 🎪 Perfect For
@@ -65,6 +76,12 @@ Perfect for those 3AM existential crisis sessions or when you want to prove to y
 Found a bug? Have a wild feature idea? Want to help people understand their own brains better?
 
 **Contribute!** This is open-source because understanding ourselves shouldn't be locked behind paywalls.
+
+---
+
+## 💙 Powered by Azure AI
+
+SageMap's public version is proudly sponsored by [Azure AI](https://azure.microsoft.com/en-us/solutions/ai), making belief mapping accessible to everyone without setup barriers.
 
 ---
 

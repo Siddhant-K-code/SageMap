@@ -9,7 +9,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Content is required' }, { status: 400 });
     }
 
-    if (!apiKey) {
+    // Check if we have Azure OpenAI configuration or user-provided API key
+    if (!apiKey && !process.env.AZURE_OPENAI_ENDPOINT) {
       return NextResponse.json({ error: 'API key is required' }, { status: 400 });
     }
 

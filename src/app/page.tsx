@@ -176,9 +176,10 @@ export default function Home() {
                 Begin Your First Entry
               </Button>
             </Link>
-            <p className="text-xs text-gray-500 max-w-lg mx-auto mt-4 px-4">
+            {/* Tip disabled for Azure OpenAI public version */}
+            {/* <p className="text-xs text-gray-500 max-w-lg mx-auto mt-4 px-4">
               💡 Tip: Add your own OpenAI API key in settings to make it work.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
