@@ -40,15 +40,15 @@ export default function SettingsPage() {
 
     // Fetch statistics
     fetchStats();
-    
+
     // Listen for localStorage changes to refresh stats
     const handleStorageChange = () => {
       fetchStats();
     };
-    
+
     window.addEventListener('storage', handleStorageChange);
     window.addEventListener('localStorageUpdate', handleStorageChange);
-    
+
     return () => {
       window.removeEventListener('storage', handleStorageChange);
       window.removeEventListener('localStorageUpdate', handleStorageChange);
@@ -62,7 +62,7 @@ export default function SettingsPage() {
       const beliefs = getBeliefs();
       const edges = getEdges();
       const journalEntries = getJournalEntries();
-      
+
       setStats({
         totalBeliefs: beliefs.length,
         totalJournalEntries: journalEntries.length,
@@ -137,7 +137,7 @@ export default function SettingsPage() {
     try {
       // Export data from localStorage
       const exportData = exportAllData();
-      
+
       const blob = new Blob([JSON.stringify(exportData, null, 2)], {
         type: 'application/json'
       });
@@ -167,10 +167,10 @@ export default function SettingsPage() {
       toast.success('All data deleted successfully');
       // Reset stats
       setStats({ totalBeliefs: 0, totalJournalEntries: 0, totalConnections: 0 });
-      
+
       // Trigger update event for other components
       window.dispatchEvent(new CustomEvent('localStorageUpdate'));
-      
+
       // Close the dialog
       setIsDeleteDialogOpen(false);
     } catch {
@@ -403,7 +403,7 @@ export default function SettingsPage() {
                 <div>
                   <h3 className="font-medium text-blue-800">OpenAI Integration</h3>
                   <p className="text-sm text-blue-700 mt-1">
-                    Your journal entries are processed by OpenAI&apos;s GPT-4 to extract beliefs.
+                    Your journal entries are processed by OpenAI&apos;s GPT-4o to extract beliefs.
                     OpenAI may store this data according to their privacy policy.
                   </p>
                 </div>
@@ -501,7 +501,7 @@ export default function SettingsPage() {
             <div className="space-y-4">
               <p className="text-sm text-gray-600">
                 SageMap is an AI-powered tool for mapping and evolving your belief system over time.
-                It uses GPT-4 to extract beliefs from your journal entries and visualizes them as an interactive graph.
+                It uses GPT-4o to extract beliefs from your journal entries and visualizes them as an interactive graph.
               </p>
             </div>
           </CardContent>

@@ -44,7 +44,7 @@ export default function Home() {
             <CardContent>
               <p className="text-gray-600">
                 Write naturally about your thoughts and experiences.
-                GPT-4 intelligently extracts your belief statements with confidence levels.
+                GPT-4o intelligently extracts your belief statements with confidence levels.
               </p>
             </CardContent>
           </Card>
@@ -145,7 +145,7 @@ export default function Home() {
               </div>
               <h3 className="font-semibold mb-2">AI Analysis</h3>
               <p className="text-gray-600 text-sm">
-                GPT-4 extracts your beliefs, categorizes them, and identifies
+                GPT-4o extracts your beliefs, categorizes them, and identifies
                 relationships with your existing belief system.
               </p>
             </div>
