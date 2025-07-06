@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { AlertTriangle, Download, Trash2, Database, Shield, Info, Key, Eye, EyeOff, CheckCircle, XCircle, RotateCcw } from 'lucide-react';
+import { AlertTriangle, Download, Trash2, Database, Shield, Info, Key, Eye, EyeOff, CheckCircle, XCircle, RotateCcw, Github } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { toast } from 'sonner';
 import { Toaster } from '@/components/ui/sonner';
@@ -503,6 +503,17 @@ export default function SettingsPage() {
                 SageMap is an AI-powered tool for mapping and evolving your belief system over time.
                 It uses GPT-4o to extract beliefs from your journal entries and visualizes them as an interactive graph.
               </p>
+              <div className="flex items-center gap-2 pt-2">
+                <a 
+                  href="https://github.com/Siddhant-K-code/SageMap" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  <Github className="w-4 h-4" />
+                  View on GitHub
+                </a>
+              </div>
             </div>
           </CardContent>
         </Card>

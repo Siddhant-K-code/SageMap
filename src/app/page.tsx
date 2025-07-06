@@ -177,7 +177,7 @@ export default function Home() {
               </Button>
             </Link>
             <p className="text-xs text-gray-500 max-w-lg mx-auto mt-4">
-              💡 Tip: For best results, add your own OpenAI API key in Settings to avoid rate limits
+              💡 Tip: Add your own OpenAI API key in settings to make it work.
             </p>
           </div>
         </div>

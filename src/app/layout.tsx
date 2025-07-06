@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Brain, Home, PenTool, Network, Settings } from "lucide-react";
+import { Brain, Home, PenTool, Network, Settings, Github } from "lucide-react";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -62,6 +62,15 @@ export default function RootLayout({
                   <Settings className="w-4 h-4" />
                   <span>Settings</span>
                 </Link>
+                <a 
+                  href="https://github.com/Siddhant-K-code/SageMap" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-black text-white hover:bg-gray-800 px-3 py-2 rounded-md transition-colors"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>GitHub</span>
+                </a>
               </div>
             </div>
           </div>

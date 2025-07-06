@@ -60,10 +60,6 @@ Perfect for those 3AM existential crisis sessions or when you want to prove to y
 - **Self-Improvement Addicts**: Track how therapy/books/life changes your beliefs
 - **Curious Humans**: Anyone who's ever wondered "Do I actually believe this?"
 
-## 🛠️ Built With Love Using
-
-Next.js 14 • TypeScript • GPT-4o • D3.js • Tailwind • shadcn/ui
-
 ## 🎉 Join the Mind-Mapping Revolution
 
 Found a bug? Have a wild feature idea? Want to help people understand their own brains better?
@@ -72,6 +68,6 @@ Found a bug? Have a wild feature idea? Want to help people understand their own 
 
 ---
 
-*"Know thyself... but maybe use AI to help because your brain is more complex than you think."*
+*"Know yourself... but maybe use AI to help because your brain is more complex than you think."*
 
 **Ready to discover how contradictory you really are?** 🤔
