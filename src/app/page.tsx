@@ -34,7 +34,7 @@ export default function Home() {
 
         {/* Features Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Brain className="w-5 h-5 text-blue-600" />
@@ -49,7 +49,7 @@ export default function Home() {
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Network className="w-5 h-5 text-green-600" />
@@ -64,7 +64,7 @@ export default function Home() {
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-purple-600" />
@@ -79,7 +79,7 @@ export default function Home() {
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Map className="w-5 h-5 text-orange-600" />
@@ -94,7 +94,7 @@ export default function Home() {
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Shield className="w-5 h-5 text-red-600" />
@@ -109,7 +109,7 @@ export default function Home() {
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <PenTool className="w-5 h-5 text-indigo-600" />
@@ -133,32 +133,41 @@ export default function Home() {
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-blue-600 font-bold">1</span>
               </div>
-              <h3 className="font-semibold mb-2">Write & Reflect</h3>
+              <h3 className="font-semibold mb-2">📝 Write & Reflect</h3>
               <p className="text-gray-600 text-sm">
                 Journal about your thoughts, experiences, and perspectives.
-                No special format needed - just write naturally.
+                No special format needed - just write naturally about what you believe.
               </p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-green-600 font-bold">2</span>
               </div>
-              <h3 className="font-semibold mb-2">AI Analysis</h3>
+              <h3 className="font-semibold mb-2">🤖 AI Extracts Beliefs</h3>
               <p className="text-gray-600 text-sm">
-                GPT-4o extracts your beliefs, categorizes them, and identifies
-                relationships with your existing belief system.
+                GPT-4o identifies your beliefs, rates confidence levels, categorizes them,
+                and connects them to your existing belief system.
               </p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-purple-600 font-bold">3</span>
               </div>
-              <h3 className="font-semibold mb-2">Explore & Evolve</h3>
+              <h3 className="font-semibold mb-2">🕸️ Visualize & Discover</h3>
               <p className="text-gray-600 text-sm">
-                Visualize your belief network, discover contradictions,
-                and track how your thinking evolves over time.
+                Explore your belief network as an interactive graph, spot patterns and contradictions,
+                and watch your thinking evolve over time.
               </p>
             </div>
+          </div>
+          
+          {/* Value Proposition */}
+          <div className="mt-8 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200">
+            <h4 className="font-semibold text-center mb-3">🎯 Why This Matters</h4>
+            <p className="text-sm text-gray-700 text-center">
+              Most people never examine their beliefs systematically. SageMap helps you understand <strong>what you believe</strong>, 
+              <strong> how beliefs connect</strong>, and <strong>how your thinking evolves</strong> - leading to better self-awareness and decision-making.
+            </p>
           </div>
         </div>
 

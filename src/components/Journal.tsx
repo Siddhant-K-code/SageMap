@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -33,14 +34,21 @@ interface ProcessedBelief {
 }
 
 export function Journal() {
+  const searchParams = useSearchParams();
   const [content, setContent] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [processedBeliefs, setProcessedBeliefs] = useState<ProcessedBelief[]>([]);
   const [showResults, setShowResults] = useState(false);
   const [mounted, setMounted] = useState(false);
+  
   useEffect(() => {
     setMounted(true);
-  }, []);
+    // Check for prompt parameter in URL
+    const prompt = searchParams.get('prompt');
+    if (prompt) {
+      setContent(prompt);
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -180,7 +188,7 @@ export function Journal() {
           </CardTitle>
           <p className="text-sm text-gray-600">
             Write about your thoughts, experiences, or reflect on your beliefs.
-            AI will extract and analyze your belief statements.
+            AI will extract and analyze your belief statements, then you can visualize them in an interactive graph to discover hidden patterns.
           </p>
         </CardHeader>
         <CardContent>
@@ -247,7 +255,7 @@ export function Journal() {
                   key={thought}
                   variant="outline"
                   size="sm"
-                  className="text-xs break-words"
+                  className="text-xs break-words cursor-pointer hover:bg-gray-50"
                   onClick={() => setContent(`I think ${thought.toLowerCase()}. Here's why...`)}
                   disabled={isProcessing}
                 >
@@ -268,7 +276,7 @@ export function Journal() {
               Extracted Beliefs ({processedBeliefs.length})
             </CardTitle>
             <p className="text-sm text-gray-600">
-              Here are the beliefs extracted from your journal entry:
+              Here are the beliefs extracted from your journal entry. Each belief can be adjusted, connected to others, and explored in the graph visualization.
             </p>
           </CardHeader>
           <CardContent>
@@ -322,6 +330,24 @@ export function Journal() {
                     )}
                   </div>
                 ))}
+                
+                {/* Next Steps Guide */}
+                <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <h4 className="text-sm font-medium text-blue-900 mb-2">🎯 What&apos;s Next?</h4>
+                  <div className="text-sm text-blue-800 space-y-1">
+                    <p>• <strong>Adjust confidence</strong> levels using the sliders above</p>
+                    <p>• <strong>Visit the Graph</strong> to see how beliefs connect and influence each other</p>
+                    <p>• <strong>Journal more</strong> to track how your beliefs evolve over time</p>
+                  </div>
+                  <div className="mt-3 flex gap-2">
+                    <a href="/graph" className="text-xs bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 cursor-pointer">
+                      View Graph
+                    </a>
+                    <button onClick={() => window.scrollTo(0, 0)} className="text-xs bg-white text-blue-600 border border-blue-300 px-3 py-1 rounded hover:bg-blue-50 cursor-pointer">
+                      Write More
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </CardContent>

@@ -19,7 +19,11 @@ interface Belief {
   deprecated?: boolean;
 }
 
-export function SimpleBeliefList() {
+interface SimpleBeliefListProps {
+  highlightedNode?: string | null;
+}
+
+export function SimpleBeliefList({ highlightedNode }: SimpleBeliefListProps) {
   const [beliefs, setBeliefs] = useState<Belief[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -100,15 +104,19 @@ export function SimpleBeliefList() {
                     {type} Beliefs ({typeBeliefs.length})
                   </h3>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {typeBeliefs.map((belief) => (
-                      <BeliefNode
-                        key={belief.id}
-                        belief={belief}
+                  {typeBeliefs.map((belief) => (
+                  <div
+                  key={belief.id}
+                  className={highlightedNode === belief.id ? 'ring-2 ring-blue-500 rounded-lg' : ''}
+                  >
+                  <BeliefNode
+                      belief={belief}
                         onUpdate={handleUpdateBelief}
-                        showDetails={true}
-                      />
-                    ))}
-                  </div>
+                          showDetails={true}
+                         />
+                       </div>
+                     ))}
+                   </div>
                 </div>
               ))}
             </div>

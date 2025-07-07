@@ -44,7 +44,11 @@ interface D3Link {
   relation: string;
 }
 
-export function BeliefGraph() {
+interface BeliefGraphProps {
+  highlightedNode?: string | null;
+}
+
+export function BeliefGraph({ highlightedNode }: BeliefGraphProps) {
   const [graphData, setGraphData] = useState<GraphData>({ nodes: [], edges: [] });
   const [loading, setLoading] = useState(true);
   const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
@@ -69,6 +73,16 @@ export function BeliefGraph() {
       window.removeEventListener('localStorageUpdate', handleStorageChange);
     };
   }, []);
+
+  // Auto-select highlighted node when provided
+  useEffect(() => {
+    if (highlightedNode && graphData.nodes.length > 0) {
+      const nodeToHighlight = graphData.nodes.find(node => node.id === highlightedNode);
+      if (nodeToHighlight) {
+        setSelectedNode(nodeToHighlight);
+      }
+    }
+  }, [highlightedNode, graphData.nodes]);
 
   const fetchGraphData = async () => {
     try {
@@ -258,7 +272,7 @@ export function BeliefGraph() {
               Belief Graph
             </CardTitle>
             <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm" onClick={handleReset}>
+              <Button variant="outline" size="sm" onClick={handleReset} className="cursor-pointer">
                 <RotateCcw className="w-4 h-4" />
               </Button>
             </div>
